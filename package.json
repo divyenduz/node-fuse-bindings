@@ -1,5 +1,5 @@
 {
-  "name": "node-fuse-bindings",
+  "name": "@zoid-fs/node-fuse-bindings",
   "version": "2.12.3",
   "description": "libfuse2 bindings for Node >=13 aims to cover the entire FUSE api",
   "main": "index.js",
@@ -15,18 +15,18 @@
   },
   "gypfile": true,
   "dependencies": {
-    "nan": "^2.14.0",
-    "node-gyp": "^6.0.1",
-    "node-gyp-build": "^4.2.0",
-    "prebuild-install": "^5.3.3",
-    "xtend": "^4.0.2"
+    "nan": "2.18.0",
+    "node-gyp": "9.4.0",
+    "node-gyp-build": "4.2.0",
+    "prebuild-install": "5.3.3",
+    "xtend": "4.0.2"
   },
   "devDependencies": {
-    "concat-stream": "^2.0.0",
-    "prebuild": "^9.1.1",
-    "prebuildify": "^3.0.4",
-    "standard": "^14.3.1",
-    "tape": "^4.11.0"
+    "concat-stream": "2.0.0",
+    "prebuild": "9.1.1",
+    "prebuildify": "3.0.4",
+    "standard": "14.3.1",
+    "tape": "4.11.0"
   },
   "repository": {
     "type": "git",
