@@ -12,19 +12,19 @@ function installFuse() {
       //https://github.com/dokan-dev/dokany/releases/download/v2.0.4.1000/Dokan_x86.msi x64
       var dokanLocal = path.join(homeDir, '.stealifyfs', 'Dokan_x64.msi');
 
-      if(!fs.existsSync(dokanLocal)) {
-            // fs.writeFileSync(dokanLocal, fs.readFileSync(dokanFromBin));
+      if (!fs.existsSync(dokanLocal)) {
+        // fs.writeFileSync(dokanLocal, fs.readFileSync(dokanFromBin));
       }
 
       return exec('msiexec.exe /i ' + dokanLocal + ' /quiet /qn /norestart');
-    break;
+      break;
 
     case 'darwin':
       // github.com/frank-dspeed/macfuse-pkg
-      var osxfuseFromBin = ;
+      var osxfuseFromBin = '???';
       var osxfuseLocal = path.join(homeDir, '.stealifyfs', 'osxfuse.pkg');
 
-      if(!fs.existsSync(osxfuseLocal)) {
+      if (!fs.existsSync(osxfuseLocal)) {
         fs.writeFileSync(osxfuseLocal, fs.readFileSync(osxfuseFromBin));
       }
 
@@ -44,7 +44,7 @@ switch (process.platform) {
 
   case 'darwin':
     var fuseFromBin = 'node_modules/fuse-bindings/build/Release/fuse_bindings.node';
-  break;
+    break;
 
   case 'linux':
   default:
@@ -53,15 +53,15 @@ switch (process.platform) {
 
 
 fs.mkdirSync(path.dirname(fuseLocal), { recursive: true, mode: '0755' }, true);
-if(!fs.existsSync(fuseLocal)) {
+if (!fs.existsSync(fuseLocal)) {
   fs.writeFileSync(fuseLocal, fs.readFileSync(fuseFromBin));
 }
 
-function verifyFuse(): boolean {
+function verifyFuse() {
   switch (process.platform) {
     case 'win32':
       var fuse = '';
-      if(!fs.existsSync(fuse)) {
+      if (!fs.existsSync(fuse)) {
         //https://github.com/dokan-dev/dokany/releases/download/v2.0.4.1000/DokanSetup.exe
         //https://github.com/dokan-dev/dokany/releases/download/v2.0.4.1000/DokanSetupDbg.exe
         console.log("stealifyfs requires dokany, either download it from: https://github.com/dokan-dev/dokany/releases or use the installFuse() method ");
@@ -72,16 +72,16 @@ function verifyFuse(): boolean {
 
     case 'darwin':
       var fuse = '/usr/local/lib/libosxfuse.2.dylib';
-      if(!fs.existsSync(fuse)) {
+      if (!fs.existsSync(fuse)) {
         console.log("stealifyfs requires osxfuse, either download it from: https://github.com/osxfuse/osxfuse/releases or use the installFuse() method");
         return false;
       }
-    break;
+      break;
 
     case 'linux':
     default:
       var fuse = '/usr/lib/x86_64-linux-gnu/libfuse.so';
-      if(!fs.existsSync(fuse)) {
+      if (!fs.existsSync(fuse)) {
         console.log("stealifyfs requires fuse support, install libfuse-dev from your distribution mirrors.");
         return false;
       }
